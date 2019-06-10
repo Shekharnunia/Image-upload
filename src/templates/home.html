@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block content %}
+	<div class="container">
+		{% if request.user %}
+		<p>UserName: {{ request.user }}</p>
+			
+		{% endif %}
+		{% if request.user.email %}
+		<p>Email {{request.user.email }}</p>
+			
+		{% endif %}
+		{% if request.user.bio %}
+		<p>Bio : {{ request.user.bio }}</p>
+			
+		{% endif %}
+		{% if request.user.location %}
+		<p>location : {{ request.user.location }}</p>
+			
+		{% endif %}
+		{% if request.user.job_title %}
+		<p>job_title : {{ request.user.job_title }}</p>
+			
+		{% endif %}
+		{% if request.user.personal_url %}
+		<p>personal_url : {{ request.user.personal_url }}</p>
+			
+		{% endif %}
+		{% if request.user.facebook_account %}
+		<p>facebook_account : {{ request.user.facebook_account }}</p>
+			
+		{% endif %}
+		{% if request.user.twitter_account %}
+		<p>twitter_account : {{ request.user.twitter_account }}</p>
+			
+		{% endif %}
+		{% if request.user.github_account %}
+		<p>github_account :{{ request.user.github_account}} </p>
+			
+		{% endif %}
+		{% if request.user.linkedin_account %}
+		<p>linkedin_account : {{ request.user.linkedin_account }}</p>
+			
+		{% endif %}
+		{% if request.user.picture %}
+			<img src="{{ request.user.picture.url }}" alt="" class="img-fluid">
+		{% endif %}
+
+	</div>
+{% endblock content %}

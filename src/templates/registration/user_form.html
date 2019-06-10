@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% load static i18n crispy_forms_tags %}
+
+{% block title %}{{ user.username|title }}{% endblock %}
+
+{% block head %}
+  <link href="{% static 'css/user_form.css' %}?v=1" rel="stylesheet">
+{% endblock head %}
+
+{% block content %}
+  <div class="page-header">
+      <h1>{% trans 'Account Settings' %}</h1>
+  </div>
+    <div class="row profile">
+      <div class="col-md-3 user-profile">
+        {% if user.first_name %}<p class="lead">{{ user.first_name }}</p>{% endif %}
+        {% if user.picture %}
+          
+            <img src="{{ request.user.picture.url }}" alt="Picture Profile" id="pic" class="img-fluid">
+          
+        {% else %}
+          
+        {% endif %}
+        <div class=" mt-5">
+          
+        </div>
+      </div>
+
+      <div class="col-md-8 offset-1">
+        {% if messages %}
+          {% for message in messages %}
+            <div class="alert alert-success alert-dismissable">
+              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+              {{ message }}
+            </div>
+          {% endfor %}
+        {% endif %}
+        <form enctype="multipart/form-data" class="form-horizontal" method="post" action="{% url 'update' %}" novalidate>
+          {% csrf_token %}
+          {{ form|crispy }}
+          <div class="control-group">
+            <div class="controls">
+              <button type="submit" class="btn btn-dark">{% trans 'Update Profile' %}</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+{% endblock %}
