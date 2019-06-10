@@ -1,5 +1,4 @@
-# Puzzles
-A University oriented social network to make a better Community
+# Image-Upload
 
 ## Running the Project Locally
 
